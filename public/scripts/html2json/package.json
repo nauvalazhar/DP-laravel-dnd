@@ -1,0 +1,31 @@
+{
+  "name": "html2json",
+  "version": "1.0.2",
+  "description": "html to json & json to html",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "lint": "eslint -c .eslintrc.js src test bench"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jxck/html2json.git"
+  },
+  "keywords": [
+    "html",
+    "json"
+  ],
+  "author": "Jxck",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jxck/html2json/issues"
+  },
+  "homepage": "https://github.com/jxck/html2json#readme",
+  "devDependencies": {
+    "eslint": "^2.6.0",
+    "mocha": "^2.4.5"
+  }
+}

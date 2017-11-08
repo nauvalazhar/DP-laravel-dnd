@@ -1,0 +1,557 @@
+@extends('layouts.app', ['title' => 'Module Layout', 'menu' => false])
+
+@section('sidemenu')
+<ul>
+	<li>
+		<a href="{!! route('modules.index') !!}">
+			<i class="ion ion-ios-arrow-left"></i> Back
+		</a>
+	</li>
+	<li class="has-tree">
+		<a href="">
+			<i class="ion ion-grid"></i> Layouts <span class="caret"></span>
+		</a>
+		<ul id="layouts" class="grid components">
+			<li class="search-menu" data-target="#layouts">
+				<input type="text" class="form-control" placeholder="Search layouts">
+			</li>
+			<li class="header">
+				Layout
+			</li>
+			<li>
+				<a role="button" data-tool='{"type": "row", "title": "Col", "html": "<div class=\"row\"></div>"}'>
+					<i class="ion ion-ios-minus-outline"></i> 
+					<div>Row</div>
+				</a>
+			</li>
+			<li>
+				<a role="button" data-dropdown="true" data-classes="" data-tool='{"type": "col", "title": "Col", "html": "<div class="col-md-4"></div>"}'>
+					<i class="ion ion-ios-keypad-outline"></i> 
+					<div>Column</div>
+				</a>
+			</li>
+
+			<li class="header">Panel</li>
+			<li>
+				<a role="button" data-type="panel" data-classes="Class:none,padding" data-html="<div class='panel'></div>">
+					<i class="ion ion-ios-photos-outline"></i> 
+					<div>Panel</div>
+				</a>
+			</li>
+			<li>
+				<a role="button" data-type="panel-heading" data-html="<div class='panel-heading'></div>">
+					<i class="ion ion-minus-round"></i> 
+					<div>Panel Heading</div>
+				</a>
+			</li>
+			<li>
+				<a role="button" data-type="panel-body" data-html="<div class='panel-body'></div>">
+					<i class="ion ion-ios-list-outline"></i> 
+					<div>Panel Body</div>
+				</a>
+			</li>
+
+			<li class="header">General</li>
+			<li>
+				<a role="button" data-type="p" data-editable-text="true" data-html="<p>Your text here</p>">
+					<i class="ion ion-ios-paper-outline"></i> <div>Paragraph</div>
+				</a>
+			</li>
+			<li>
+				<a role="button" data-type="button" data-editable-text="true" data-attributes="Type:type:submit,reset,button|Class:class:btn btn-primary,btn btn-danger,btn btn-info,btn btn-success,btn btn-warning|Onclick:onclick" data-html="<button type='button' class='btn btn-primary'>Button</button>">
+					<i class="ion ion-paper-airplane"></i> 
+					<div>Button</div>
+				</a>
+			</li>
+			<li>
+				<a role="button" data-type="a" data-editable-text="true" data-attributes="Href:href|Target:target:_blank,_self" data-html="<a href='#'>Your link</a>">
+					<i class="ion ion-link"></i> <div>Link</div>
+				</a>
+			</li>
+			<li>
+				<a role="button" data-type="img" data-attributes="Src:src|Alt:alt" data-html="<img src='#' alt='My Image'>">
+					<i class="ion ion-image"></i> <div>Image</div>
+				</a>
+			</li>
+
+			<li class="header">Heading</li>
+			<li>
+				<a role="button" data-type="h1" data-editable-text="true" data-html="<h1>Your title</h1>">
+					<i class="ion ion-information"></i> 
+					<div>H1</div>
+				</a>
+			</li>
+			<li>
+				<a role="button" data-type="h2" data-editable-text="true" data-html="<h2>Your title</h2>">
+					<i class="ion ion-information"></i> 
+					<div>H2</div>
+				</a>
+			</li>
+			<li>
+				<a role="button" data-type="h3" data-editable-text="true" data-html="<h3>Your title</h3>">
+					<i class="ion ion-information"></i> 
+					<div>H3</div>
+				</a>
+			</li>
+			<li>
+				<a role="button" data-type="h4" data-editable-text="true" data-html="<h4>Your title</h4>">
+					<i class="ion ion-information"></i> 
+					<div>H4</div>
+				</a>
+			</li>
+			<li>
+				<a role="button" data-type="h5" data-editable-text="true" data-html="<h5>Your title</h5>">
+					<i class="ion ion-information"></i> 
+					<div>H5</div>
+				</a>
+			</li>
+			<li>
+				<a role="button" data-type="h6" data-editable-text="true" data-html="<h6>Your title</h6>">
+					<i class="ion ion-information"></i> 
+					<div>H6</div>
+				</a>
+			</li>
+		</ul>
+	</li>
+	<li class="has-tree">
+		<a href="">
+			<i class="ion ion-paintbrush"></i> Components <span class="caret"></span>
+		</a>
+		<ul id="components" class="components">
+			<li class="search-menu" data-target="#components">
+				<input type="text" class="form-control" placeholder="Search components">
+			</li>
+			@foreach(Datatype::list() as $k => $type)
+			<li>
+				<a role="button" 
+				data-type="{{$k}}" 
+				data-html='{{ Datatype::render(['type' => $k, 'name' => 'field_name', 'display_name' => 'Name', 'toolbox' => true]) }}' 
+				data-type="{{$k}}" 
+				{{-- if select, radio and checkbox --}}
+				@if(in_array($k, ['select', 'radio', 'checkbox']))
+				data-ask="Add {{$type['display_name']}}|Write option list with this format(option_value:Option Text)"
+				data-clone="{{ $type['clone'] }}"
+				@endif
+				{{-- if select --}}
+				@if(in_array($k, ['select']))
+				data-clone-to="append:select"
+				@endif
+				{{-- if radio and checkbox --}}
+				@if(in_array($k, ['radio', 'checkbox']))
+				data-clone-to="before:.help-block"
+				@endif
+				data-editable-attrs='[{"key": "display_name", "title": "Display Name", "description": "Human readable text", "selector": "label", "type": "input", "method": "html"}, {"key": "name", "title": "Name", "description": "Name/key of your data type", "selector": ":input", "type": "input", "method": "[name]"}, {"key": "description", "title": "Description", "description": "Add description to this field", "selector": ".help-block", "type": "input", "method": "html"}, {"key": "required", "title": "Required", "description": "Is this field required?", "type": "dropdown", "options": [{"true": "Yes", "false": "No"}], "method": "[data-s-required]" }]'{{-- 				data-editable-list="label:label:html|name:input,textarea:attr[name]|description:.help-block:html|Required:null:attr[data-s-required]:true,false{{!in_array($k, ['radio', 'checkbox','select', 'file', 'image', 'datepicker', 'currency', 'timepicker']) ? '|maxlength:input,textarea:attr[max]|minlength:input,textarea:attr[min]' : '' . in_array($k, ['file', 'image']) ? '|maxsize:null:attr[data-s-maxsize]' : ''}}" --}}>
+					<i class="ion ion-ios-circle-outline"></i> 
+					<div>{{$type['display_name']}}</div>
+				</a>
+			</li>
+			@endforeach
+		</ul>
+	</li>
+</ul>
+@stop
+
+@section('content')
+@component('layouts.parts.header', ['title' => 'Module Layout'])
+<div class="pull-right layout-actions">
+	<ul class="toolbox">
+	</ul>
+	<a role="button" class="btn btn-primary preview">Preview</a>
+</div>
+@endcomponent
+
+@component('layouts.parts.alert')
+@endcomponent
+
+<form method="post" action="{{ route('modules.store') }}">
+	{!! csrf_field() !!}
+
+	<div id="layout-area"></div>
+	<textarea id="result" style="display: none;"></textarea>
+</form>
+@stop
+
+@section('foot')
+<script>
+	let droparea = $("#layout-area"),
+			_toolbox = $(".toolbox"),
+			toolbox = {
+				reset: () => {
+					_toolbox.html("");
+				},
+				addItem: (inner, method) => {
+					if(!method) method = 'append';
+					inner = "<li class='toolbox-item'>";
+					inner += inner;
+					inner += "</li>";
+					_toolbox[method](inner);
+				},
+				setInspector: (id) => {
+					_toolbox.attr('data-node', id);
+				},
+				getId: () => {
+					return _toolbox.data('node');
+				}
+			},
+			result = $("#result");
+
+	let update_result = () => {
+		let code = droparea.html();
+				code = himalaya.parse(code);
+
+		result.val(JSON.stringify(code));
+	}
+	update_result();
+
+	let draggable_options = {
+		revert: "invalid",
+		cursorAt: { top: 30, left: 30 },
+		helper: "clone",
+		cursor: "move",
+		start: function() {
+			$(".sidemenu").css({
+				overflow: 'initial'
+			})
+		},
+		stop: function() {
+			$(".sidemenu").css({
+				overflow: 'auto'
+			})
+		}
+	}
+	$(".components li:not(.header)").draggable(draggable_options);
+
+	let count = 0, droppable_options = {
+		accept: ".components li:not(.header), .draggable-element",
+		greedy: true,
+		hoverClass: "droppable-hover",
+    classes: {
+      "ui-droppable-active": "ui-state-highlight"
+    },
+    drop: function(e, ui) {    	
+    	let droppedel = ui.draggable.find("a"),
+    			_html = $(droppedel.data('html')),
+    			_ask = droppedel.data('ask');
+
+    	if(_ask) {
+    		manage_list(droppedel,_html);
+    	}
+
+    	_html.addClass("draggable-element");
+    	_html.attr('data-editor-id', 'node-' + count);
+    	_html.attr('data-editor-type', droppedel.data('type'));
+    	// _html.draggable({
+    	// 	revert: 'invalid',
+    	// 	snap: true,
+    	// 	snapMode: 'inner'
+    	// });
+    	_html.droppable(droppable_options);
+
+    	if(droparea.hasClass("has-empty")) {
+    		droparea.removeClass("has-empty");
+    		droparea.find(".text").remove();
+	  	}
+  		$(this).append(_html);
+
+			update_result();
+  		count++;
+    }
+	}
+	droparea.droppable(droppable_options);
+
+	// Preview button
+	$(".preview").click(function() {
+		if(!$(this).hasClass("has-preview")) {
+			$(this).html("Editor Mode");
+			droparea.find(".draggable-element").data('draggable', true);
+			$(".draggable-element").removeClass("has-focused");
+			toolbox.reset();
+			droparea.find(".draggable-element").removeClass('draggable-element');
+			$(this).addClass("has-preview");
+			droparea.addClass("preview");
+			init();
+		}else{
+			$(this).html("Preview");
+			droparea.find("[data-draggable]").addClass("draggable-element");
+			$(this).removeClass("has-preview");
+			droparea.removeClass("preview");
+			destroy();
+		}
+	});
+
+	// Element inspector
+	$(document).on("click", ".draggable-element", function(e) {
+		let selected_element = $(e.target), // current element
+				all_draggable = $(".draggable-element") // all element in editor area,
+				item_from_sidemenu = $("[data-type='"+selected_element.data('editor-type')+"']") // item from layout or component menu;
+
+		e.preventDefault();
+
+		if(!selected_element.hasClass("draggable-element")) {
+			return;
+		}
+
+		all_draggable.removeClass("has-focused");
+		selected_element.addClass("has-focused");
+
+		toolbox.reset();
+		toolbox.setInspector(selected_element.data('editor-id'));
+		toolbox.addItem("<a title='Selected Element'>" + item_from_sidemenu.find("div").html() + "</a>");
+
+		if(item_from_sidemenu.data('ask')) {
+			let _ask_data = item_from_sidemenu.data('ask').split("|");
+  		toolbox.addItem("<a data-action='manage-list' data-title='"+_ask_data[0]+"'>"+_ask_data[0]+"</a>");
+		}
+
+		if(item_from_sidemenu.data('editable-text')) {
+  		toolbox.addItem("<a data-action='editable-text' data-title='Edit text'>Edit Text</a>");
+		}
+
+		if(item_from_sidemenu.data('editable-attrs')) {
+			let editable_attrs = item_from_sidemenu.data('editable-attrs');
+					editable_attrs = JSON.parse(JSON.stringify(editable_attrs));
+
+			editable_attrs.forEach((obj) => {
+				if(obj.type == "input") {
+					toolbox.addItem("<a>" + obj.title + "</a>");
+				}else if(obj.type == "dropdown") {
+					toolbox.addItem("<a>" + obj.title + "</a>");
+				}
+			});
+		}
+
+		if(item_from_sidemenu.data('classes')) {
+			let get_classes = item_from_sidemenu.data('classes');
+					get_classes = get_classes.split("|");
+
+			get_classes.forEach((group, index) => {
+				let title = group.split(":")[0],
+						classes = "<a data-toggle='dropdown' class='dropdown-toggle' data-title='"+title+"'>"+title+" <span class='caret'></span></a>";
+
+				classes += '<ul class="dropdown-menu">';
+
+				if(index !== 0) {
+				  classes += '<li><a role="button" data-action="add-class" data-class-position="'+index+'" data-class="none">None</a></li>';
+				}
+
+			  group = group.replace(/(\w+)\:/, "");
+				(group.split(",")).forEach((item) => {
+				  classes += '<li><a role="button" data-action="add-class" data-class-position="'+index+'" data-class="'+item+'">' + item + '</a></li>';
+				});
+				classes += '</ul>';
+
+	  		toolbox.addItem(classes);
+			});
+		}
+
+		if(item_from_sidemenu.data('attributes')) {
+			let get_attributes = item_from_sidemenu.data('attributes');
+					get_attributes = get_attributes.split("|");
+
+			get_attributes.forEach((group, index) => {
+			  let title = group.split(":")[0],
+			  		attributes = "";
+					  group = group.split(":");
+
+					  if(group[2] == undefined) {
+			  		attributes += "<a data-attr='"+group[1]+"' data-action='add-attr' data-title='"+title+"'>";
+						  	attributes += title;
+			  		attributes += "</a>";
+			  		}else{
+			  		attributes += "<a data-toggle='dropdown' class='dropdown-toggle' data-title='"+title+"'>";
+						  	attributes += title;
+			  		attributes += "</a>";			  			
+			  		}
+
+			  if(group[2] !== undefined) {
+			  	attributes += "<ul class='dropdown-menu'>";
+			  	group[2].split(",").forEach((item) => {
+					  attributes += '<li><a role="button" data-action="change-attr" data-attr="'+group[1]+'" data-value="'+item+'">' + item + '</a></li>';
+			  	})
+			  	attributes += "</ul>";
+			  }
+
+			  toolbox.addItem(attributes);
+			})
+		}
+
+		toolbox.addItem("<a data-action='delete' class='bg-red' title='Delete'>Delete</a>");
+	
+		$(".toolbox-item").each(function() {
+			$(this).find('a').on("click", function() {
+				let action = $(this).data('action'),
+						target = $("[data-editor-id='"+toolbox.getId()+"']");
+
+				switch (action) {
+					case 'delete':
+						target.remove();
+						toolbox.reset();
+						droparea_c_empty();
+						break;
+					case 'editable-text':
+			  		swal({
+			  			title: "Change Text",
+			  			text: "Input your text below",
+			  			content: {
+			  				element: "input",
+			  				attributes: {
+			  					value: target.html()
+			  				}
+			  			}
+			  		})
+			  		.then((value) => {
+			  			if(value !== null) {
+			  				target.html(value);
+			  			}
+			  		});
+						break;
+					case 'add-class':
+						let _this_class_position = $(this).data('class-position'),
+								_this_class_list = (item_from_sidemenu.data('classes').split("|")[_this_class_position]).replace(/(\w+)\:/, ""),
+								_this_class_added = $(this).data('class');
+
+								_this_class_list.split(",").forEach((cl) => {
+								  target.removeClass(cl);
+									target.attr('data-editor-classes-' + _this_class_position, cl);
+								});
+
+								if(_this_class_added !== 'none') {
+									target.addClass(_this_class_added);
+								}
+
+								target.attr('data-editor-classes-' + _this_class_position, _this_class_added);
+						break;
+					case 'change-attr':
+						target = ($(this).data('target') ? target.find($(this).data('target')) : target);
+						target.attr($(this).data('attr'), $(this).data('value'));
+						break;
+					case 'add-attr':
+			  		swal({
+			  			title: "Change `"+$(this).data('attr')+"`",
+			  			text: "Enter value of `"+$(this).data('attr')+"` attribute",
+			  			content: {
+			  				element: "input",
+			  				attributes: {
+			  					value: target.attr($(this).data('attr'))
+			  				}
+			  			}
+			  		})
+			  		.then((value) => {
+			  			if(value !== null) {
+			  				target.attr($(this).data('attr'), value);
+			  			}
+			  		});
+						break;
+					case 'change-list':
+						let _target = $(this).data('target') == 'null' ? selected_element : selected_element.find($(this).data('target')),
+								_store = $(this).data('store'),
+								_is_store = $(this).data('isstore'),
+								current;
+
+	  				if(_store == 'html') {
+	  					current = _target.html();
+	  				}else if(_store.indexOf("attr") !== -1) {
+	  					let __store = _store.replace(/attr\[([a-zA-Z0-9]+)]/g, "$1");
+	  					current = _target.attr(__store) ? _target.attr(__store) : null;
+	  				}
+
+			  		swal({
+			  			title: "Change `"+$(this).data('title')+"`",
+			  			text: "Enter value of `"+$(this).data('title')+"`",
+			  			content: {
+			  				element: "input",
+			  				attributes: {
+			  					value: current
+			  				}
+			  			}
+			  		})
+			  		.then((value) => {
+			  			if(value !== null) {
+			  				console.log(_store)
+			  				if(_store == 'html') {
+			  					_target.html(value);
+			  				}else if(_store.indexOf("attr") !== -1) {
+			  					_store = _store.replace(/attr\[([a-zA-Z0-9_-]+)]/g, "$1");
+			  					_target.attr(_store, value);
+			  				}
+
+			  				if(_is_store == 'true') {
+			  					selected_element.data('s-' + $(this).data('title'), value);
+			  				}
+			  			}
+			  		});
+						break;
+					case 'manage-list':
+						manage_list($("[data-type='"+selected_element.data('editor-type')+"']"), selected_element);
+						break;
+					default:
+						// statements_def
+						break;
+				}
+			});
+		});
+
+		bs_plugin();
+	});
+
+
+	let manage_list = (droppedel,_html) => {
+		let _ask = droppedel.data('ask').split("|"),
+				_clone_to = droppedel.data('clone-to');
+
+		let ask = swal({
+			title: _ask[0],
+			text: _ask[1],
+			content: {
+				element: "input",
+				attributes: {				
+					value: (_html.data('s-list') ? _html.data('s-list') : null)
+				}
+			},
+			buttons: {
+			  confirm: {
+			    text: "Create",
+			    value: true,
+			    visible: true
+			  }
+			}
+		})
+		.then((value) => {
+			if(value == "" || !value || value == null) {  				
+			}else{
+  			let _method = _clone_to.split(":")[0],
+  					_selector = _clone_to.split(":")[1],
+  					_item;
+
+  			_html.data('s-list', value);
+  			let html_now = _html.html(),
+  					data_to_append = "";
+
+  			value.split(",").forEach((item) => {
+  				let _clone = droppedel.data('clone'),
+  						reg = /{([a-zA-Z0-9_]+)}/g;
+
+  				_item = item.split(":");
+  				while(match = reg.exec(_clone)) {
+  					_clone = _clone.replace("{" + match[1] + "}", _item[match[1]]);
+  				}
+  				data_to_append += _clone;
+  			});
+
+  			_html.html(droppedel.data("html"));
+  			_selector = _html.find(_selector);
+  			_selector[_method](data_to_append);
+			}
+		});
+	}
+
+	let droparea_c_empty = () => {
+		if(droparea.html().length < 1) {
+			droparea.addClass("has-empty");
+			droparea.html("<div class='text'>Drop your components here</div>");
+		}		
+	}
+
+	droparea_c_empty();
+</script>
+@stop

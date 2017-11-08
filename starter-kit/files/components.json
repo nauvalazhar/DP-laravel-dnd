@@ -1,0 +1,1533 @@
+[
+	{
+		"name": "layout",
+		"display_name": "Layout",
+		"children": [
+			{
+				"name": "row",
+				"display_name": "Row",
+				"icon": "<i class=\"ion ion-ios-minus-outline\"></i>",
+				"html": "<div class=\"row\"></div>"
+			},
+			{
+				"name": "col",
+				"display_name": "Col",
+				"icon": "<i class=\"ion ion-ios-keypad-outline\"></i>",
+				"html": "<div class=\"col-lg-4\"></div>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "class",
+						"name": "class",
+						"display_name": "Class",
+						"type": "select",
+						"options": [
+							{
+								"name": "large",
+								"display_name": "Large",
+								"primary": true,
+								"list": [
+									{
+										"name": "col-lg-1",
+										"display_name": "col-lg-1"
+									},
+									{
+										"name": "col-lg-2",
+										"display_name": "col-lg-2"
+									},
+									{
+										"name": "col-lg-3",
+										"display_name": "col-lg-3"
+									},
+									{
+										"name": "col-lg-4",
+										"display_name": "col-lg-4"
+									},
+									{
+										"name": "col-lg-5",
+										"display_name": "col-lg-5"
+									},
+									{
+										"name": "col-lg-6",
+										"display_name": "col-lg-6"
+									},
+									{
+										"name": "col-lg-7",
+										"display_name": "col-lg-7"
+									},
+									{
+										"name": "col-lg-8",
+										"display_name": "col-lg-8"
+									},
+									{
+										"name": "col-lg-9",
+										"display_name": "col-lg-9"
+									},
+									{
+										"name": "col-lg-10",
+										"display_name": "col-lg-10"
+									},
+									{
+										"name": "col-lg-11",
+										"display_name": "col-lg-11"
+									},
+									{
+										"name": "col-lg-12",
+										"display_name": "col-lg-12"
+									}
+								]
+							},
+							{
+								"name": "medium",
+								"display_name": "Medium",
+								"list": [
+									{
+										"name": "col-md-1",
+										"display_name": "col-md-1"
+									},
+									{
+										"name": "col-md-2",
+										"display_name": "col-md-2"
+									},
+									{
+										"name": "col-md-3",
+										"display_name": "col-md-3"
+									},
+									{
+										"name": "col-md-4",
+										"display_name": "col-md-4"
+									},
+									{
+										"name": "col-md-5",
+										"display_name": "col-md-5"
+									},
+									{
+										"name": "col-md-6",
+										"display_name": "col-md-6"
+									},
+									{
+										"name": "col-md-7",
+										"display_name": "col-md-7"
+									},
+									{
+										"name": "col-md-8",
+										"display_name": "col-md-8"
+									},
+									{
+										"name": "col-md-9",
+										"display_name": "col-md-9"
+									},
+									{
+										"name": "col-md-10",
+										"display_name": "col-md-10"
+									},
+									{
+										"name": "col-md-11",
+										"display_name": "col-md-11"
+									},
+									{
+										"name": "col-md-12",
+										"display_name": "col-md-12"
+									}
+								]
+							},
+							{
+								"name": "small",
+								"display_name": "Small",
+								"list": [
+									{
+										"name": "col-sm-1",
+										"display_name": "col-sm-1"
+									},
+									{
+										"name": "col-sm-2",
+										"display_name": "col-sm-2"
+									},
+									{
+										"name": "col-sm-3",
+										"display_name": "col-sm-3"
+									},
+									{
+										"name": "col-sm-4",
+										"display_name": "col-sm-4"
+									},
+									{
+										"name": "col-sm-5",
+										"display_name": "col-sm-5"
+									},
+									{
+										"name": "col-sm-6",
+										"display_name": "col-sm-6"
+									},
+									{
+										"name": "col-sm-7",
+										"display_name": "col-sm-7"
+									},
+									{
+										"name": "col-sm-8",
+										"display_name": "col-sm-8"
+									},
+									{
+										"name": "col-sm-9",
+										"display_name": "col-sm-9"
+									},
+									{
+										"name": "col-sm-10",
+										"display_name": "col-sm-10"
+									},
+									{
+										"name": "col-sm-11",
+										"display_name": "col-sm-11"
+									},
+									{
+										"name": "col-sm-12",
+										"display_name": "col-sm-12"
+									}
+								]
+							},
+							{
+								"name": "extra-small",
+								"display_name": "Extra Small",
+								"list": [
+									{
+										"name": "col-xs-1",
+										"display_name": "col-xs-1"
+									},
+									{
+										"name": "col-xs-2",
+										"display_name": "col-xs-2"
+									},
+									{
+										"name": "col-xs-3",
+										"display_name": "col-xs-3"
+									},
+									{
+										"name": "col-xs-4",
+										"display_name": "col-xs-4"
+									},
+									{
+										"name": "col-xs-5",
+										"display_name": "col-xs-5"
+									},
+									{
+										"name": "col-xs-6",
+										"display_name": "col-xs-6"
+									},
+									{
+										"name": "col-xs-7",
+										"display_name": "col-xs-7"
+									},
+									{
+										"name": "col-xs-8",
+										"display_name": "col-xs-8"
+									},
+									{
+										"name": "col-xs-9",
+										"display_name": "col-xs-9"
+									},
+									{
+										"name": "col-xs-10",
+										"display_name": "col-xs-10"
+									},
+									{
+										"name": "col-xs-11",
+										"display_name": "col-xs-11"
+									},
+									{
+										"name": "col-xs-12",
+										"display_name": "col-xs-12"
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "panel",
+		"display_name": "Panel",
+		"children": [
+			{
+				"name": "panel",
+				"display_name": "Panel Wrapper",
+				"icon": "<i class=\"ion ion-ios-photos-outline\"></i>",
+				"html": "<div class=\"panel\"></div>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "class",
+						"name": "class",
+						"display_name": "Class",
+						"type": "select",
+						"options": [
+							{
+								"name": "class",
+								"display_name": "Class",
+								"list": [
+									{
+										"name": "padding",
+										"display_name": "Padding"
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "panel-heading",
+				"display_name": "Panel Heading",
+				"icon": "<i class=\"ion ion-minus-round\"></i>",
+				"html": "<div class=\"panel-heading\"></div>"
+			},
+			{
+				"name": "panel-body",
+				"display_name": "Panel Body",
+				"icon": "<i class=\"ion ion-ios-list-outline\"></i>",
+				"html": "<div class=\"panel-body\"></div>"
+			}
+		]
+	},
+	{
+		"name": "general",
+		"display_name": "General",
+		"children": [
+			{
+				"name": "paragraph",
+				"display_name": "Paragraph",
+				"icon": "<i class=\"ion ion-ios-paper-outline\"></i>",
+				"html": "<p>Your text here</p>",
+				"editable": [
+					{
+						"selector": "html",
+						"store_to": "this",
+						"name": "text",
+						"display_name": "Text content",
+						"type": "input"
+					}
+				]				
+			},
+			{
+				"name": "button",
+				"display_name": "Button",
+				"icon": "<i class=\"ion ion-paper-airplane\"></i>",
+				"html": "<button class='btn'>Button</button>",
+				"editable": [
+					{
+						"selector": "html",
+						"store_to": "this",
+						"name": "button-text",
+						"display_name": "Text Content",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "class",
+						"name": "class",
+						"display_name": "Class",
+						"type": "select",
+						"options": [
+							{
+								"name": "button-class-prefix",
+								"display_name": "Primary Class",
+								"primary": true,
+								"list": [
+									{
+										"name": "btn",
+										"display_name": "btn"
+									}
+								]
+							},
+							{
+								"name": "button-class",
+								"display_name": "Button Style",
+								"list": [
+									{
+										"name": "btn-primary",
+										"display_name": "Primary"
+									},
+									{
+										"name": "btn-danger",
+										"display_name": "Danger"
+									},
+									{
+										"name": "btn-default",
+										"display_name": "Default"
+									},
+									{
+										"name": "btn-warning",
+										"display_name": "Warning"
+									},
+									{
+										"name": "btn-success",
+										"display_name": "Success"
+									},
+									{
+										"name": "btn-info",
+										"display_name": "Info"
+									}
+								]
+							}
+						]
+					},
+					{
+						"selector": "attr",
+						"store_to": "onclick",
+						"name": "button-onclick",
+						"display_name": "On Click",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "type",
+						"name": "type",
+						"display_name": "Type",
+						"type": "select",
+						"options": [
+							{
+								"name": "button-type",
+								"display_name": "Type",
+								"list": [
+									{
+										"name": "submit",
+										"display_name": "Submit"
+									},
+									{
+										"name": "button",
+										"display_name": "Button"
+									},
+									{
+										"name": "reset",
+										"display_name": "Reset"
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "hyperlink",
+				"display_name": "Hyperlink",
+				"icon": "<i class=\"ion ion-link\"></i>",
+				"html": "<a href='#'>Your Link</a>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "href",
+						"name": "hyperlink-href",
+						"display_name": "Href",
+						"type": "input",
+						"keep_old": false
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"name": "hyperlink-text",
+						"display_name": "Text",
+						"type": "input"
+					},
+					{
+						"selector": "target",
+						"store_to": "attr",
+						"name": "hyperlink-target",
+						"display_name": "Target",
+						"type": "select",
+						"options": [
+							{
+								"name": "hyperlink-target",
+								"display_name": "Target",
+								"list": [
+									{
+										"name": "_blank",
+										"display_name": "_blank"
+									},
+									{
+										"name": "_self",
+										"display_name": "_self"
+									},
+									{
+										"name": "_parent",
+										"display_name": "_parent"
+									},
+									{
+										"name": "_top",
+										"display_name": "_top"
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "image",
+				"display_name": "Image",
+				"icon": "<i class=\"ion ion-image\"></i>",
+				"html": "<img src='path/to/your/image.jpg' alt='This is alt of your image'>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "alt",
+						"name": "image-alt",
+						"display_name": "Alt",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "src",
+						"name": "image-src",
+						"display_name": "Image URL",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "width",
+						"name": "image-width",
+						"display_name": "Image Width",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "height",
+						"name": "image-height",
+						"display_name": "Image Height",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "class",
+						"name": "image-class",
+						"display_name": "Class",
+						"type": "select",
+						"options": [
+							{
+								"name": "image-class",
+								"display_name": "Class",
+								"list": [
+									{
+										"name": "img-responsive",
+										"display_name": "img-responsive"
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "general",
+		"display_name": "General",
+		"children": [
+			{
+				"name": "heading-1",
+				"display_name": "H1",
+				"icon": "<i class=\"ion ion-information\"></i>",
+				"html": "<h1>Heading 1</h1>",
+				"editable": [
+					{
+						"selector": "html",
+						"store_to": "this",
+						"name": "heading-1-text",
+						"display_name": "Text Content",
+						"type": "input"
+					}
+				]				
+			},
+			{
+				"name": "heading-2",
+				"display_name": "H2",
+				"icon": "<i class=\"ion ion-information\"></i>",
+				"html": "<h2>Heading 2</h2>",
+				"editable": [
+					{
+						"selector": "html",
+						"store_to": "this",
+						"name": "heading-2-text",
+						"display_name": "Text Content",
+						"type": "input"
+					}
+				]				
+			},
+			{
+				"name": "heading-3",
+				"display_name": "H3",
+				"icon": "<i class=\"ion ion-information\"></i>",
+				"html": "<h3>Heading 3</h3>",
+				"editable": [
+					{
+						"selector": "html",
+						"store_to": "this",
+						"name": "heading-3-text",
+						"display_name": "Text Content",
+						"type": "input"
+					}
+				]				
+			},
+			{
+				"name": "heading-4",
+				"display_name": "H4",
+				"icon": "<i class=\"ion ion-information\"></i>",
+				"html": "<h4>Heading 4</h4>",
+				"editable": [
+					{
+						"selector": "html",
+						"store_to": "this",
+						"name": "heading-4-text",
+						"display_name": "Text Content",
+						"type": "input"
+					}
+				]				
+			},
+			{
+				"name": "heading-5",
+				"display_name": "H5",
+				"icon": "<i class=\"ion ion-information\"></i>",
+				"html": "<h5>Heading 5</h5>",
+				"editable": [
+					{
+						"selector": "html",
+						"store_to": "this",
+						"name": "heading-5-text",
+						"display_name": "Text Content",
+						"type": "input"
+					}
+				]				
+			},
+			{
+				"name": "heading-6",
+				"display_name": "H6",
+				"icon": "<i class=\"ion ion-information\"></i>",
+				"html": "<h6>Heading 6</h6>",
+				"editable": [
+					{
+						"selector": "html",
+						"store_to": "this",
+						"name": "heading-6-text",
+						"display_name": "Text Content",
+						"type": "input"
+					}
+				]				
+			}
+		]
+	},
+	{
+		"name": "fields",
+		"display_name": "Fields",
+		"children": [
+			{	
+				"name": "text",
+				"display_name": "Text",
+				"icon": "<i class=\"ion-ios-circle-outline\"></i>",
+				"droppable": false,
+				"html": "<div class='form-group'><label>Field Name</label><input type='text' name='field_name' class='form-control'><div class='help-text'></div></div>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "name",
+						"find": ":input",
+						"name": "input-name",
+						"display_name": "Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": "label",
+						"name": "input-display-name",
+						"display_name": "Display Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": ".help-text",
+						"name": "input-description",
+						"display_name": "Description",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "required",
+						"find": ":input",
+						"name": "input-required",
+						"display_name": "Required",
+						"type": "select",
+						"options": [
+							{
+								"name": "input-required",
+								"display_name": "Required",
+								"primary": true,
+								"list": [
+									{
+										"name": "required",
+										"display_name": "Yes"
+									},
+									{
+										"name": "no",
+										"display_name": "No"
+									}
+								]
+							}
+						]
+					},
+					{
+						"selector": "attr",
+						"store_to": "max",
+						"find": ":input",
+						"name": "input-maxlength",
+						"display_name": "Max Length",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "min",
+						"find": ":input",
+						"name": "input-minlength",
+						"display_name": "Min Length",
+						"type": "input"
+					}
+				]
+			},
+			{
+				"name": "number",
+				"display_name": "Number",
+				"icon": "<i class=\"ion-ios-circle-outline\"></i>",
+				"droppable": false,
+				"html": "<div class='form-group'><label>Field Name</label><input type='number' name='field_name' class='form-control'><div class='help-text'></div></div>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "name",
+						"find": ":input",
+						"name": "input-name",
+						"display_name": "Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": "label",
+						"name": "input-display-name",
+						"display_name": "Display Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": ".help-text",
+						"name": "input-description",
+						"display_name": "Description",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "required",
+						"find": ":input",
+						"name": "input-required",
+						"display_name": "Required",
+						"type": "select",
+						"options": [
+							{
+								"name": "input-required",
+								"display_name": "Required",
+								"primary": true,
+								"list": [
+									{
+										"name": "true",
+										"display_name": "Yes"
+									},
+									{
+										"name": "false",
+										"display_name": "No"
+									}
+								]
+							}
+						]
+					},
+					{
+						"selector": "attr",
+						"store_to": "max",
+						"find": ":input",
+						"name": "input-maxlength",
+						"display_name": "Max Length",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "min",
+						"find": ":input",
+						"name": "input-minlength",
+						"display_name": "Min Length",
+						"type": "input"
+					}
+				]
+			},
+			{
+				"name": "textarea",
+				"display_name": "Textarea",
+				"icon": "<i class=\"ion-ios-circle-outline\"></i>",
+				"droppable": false,
+				"html": "<div class='form-group'><label>Field Name</label><textarea name='field_name' class='form-control'></textarea><div class='help-text'></div></div>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "name",
+						"find": ":input",
+						"name": "input-name",
+						"display_name": "Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": "label",
+						"name": "input-display-name",
+						"display_name": "Display Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": ".help-text",
+						"name": "input-description",
+						"display_name": "Description",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "required",
+						"find": ":input",
+						"name": "input-required",
+						"display_name": "Required",
+						"type": "select",
+						"options": [
+							{
+								"name": "input-required",
+								"display_name": "Required",
+								"primary": true,
+								"list": [
+									{
+										"name": "true",
+										"display_name": "Yes"
+									},
+									{
+										"name": "false",
+										"display_name": "No"
+									}
+								]
+							}
+						]
+					},
+					{
+						"selector": "attr",
+						"store_to": "max",
+						"find": ":input",
+						"name": "input-maxlength",
+						"display_name": "Max Length",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "min",
+						"find": ":input",
+						"name": "input-minlength",
+						"display_name": "Min Length",
+						"type": "input"
+					}
+				]
+			},
+			{
+				"name": "richtext",
+				"display_name": "Richtext",
+				"icon": "<i class=\"ion-ios-circle-outline\"></i>",
+				"droppable": false,
+				"html": "<div class='form-group'><label>Field Name</label><textarea name='field_name' class='form-control editor'></textarea><div class='help-text'></div></div>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "name",
+						"find": ":input",
+						"name": "input-name",
+						"display_name": "Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": "label",
+						"name": "input-display-name",
+						"display_name": "Display Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": ".help-text",
+						"name": "input-description",
+						"display_name": "Description",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "required",
+						"find": ":input",
+						"name": "input-required",
+						"display_name": "Required",
+						"type": "select",
+						"options": [
+							{
+								"name": "input-required",
+								"display_name": "Required",
+								"primary": true,
+								"list": [
+									{
+										"name": "true",
+										"display_name": "Yes"
+									},
+									{
+										"name": "false",
+										"display_name": "No"
+									}
+								]
+							}
+						]
+					},
+					{
+						"selector": "attr",
+						"store_to": "max",
+						"find": ":input",
+						"name": "input-maxlength",
+						"display_name": "Max Length",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "min",
+						"find": ":input",
+						"name": "input-minlength",
+						"display_name": "Min Length",
+						"type": "input"
+					}
+				]
+			},
+			{
+				"name": "code",
+				"display_name": "Code",
+				"icon": "<i class=\"ion-ios-circle-outline\"></i>",
+				"droppable": false,
+				"html": "<div class='form-group'><label>Field Name</label><textarea name='field_name' class='form-control code'></textarea><div class='help-text'></div></div>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "name",
+						"find": ":input",
+						"name": "input-name",
+						"display_name": "Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": "label",
+						"name": "input-display-name",
+						"display_name": "Display Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": ".help-text",
+						"name": "input-description",
+						"display_name": "Description",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "required",
+						"find": ":input",
+						"name": "input-required",
+						"display_name": "Required",
+						"type": "select",
+						"options": [
+							{
+								"name": "input-required",
+								"display_name": "Required",
+								"primary": true,
+								"list": [
+									{
+										"name": "true",
+										"display_name": "Yes"
+									},
+									{
+										"name": "false",
+										"display_name": "No"
+									}
+								]
+							}
+						]
+					},
+					{
+						"selector": "attr",
+						"store_to": "max",
+						"find": ":input",
+						"name": "input-maxlength",
+						"display_name": "Max Length",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "min",
+						"find": ":input",
+						"name": "input-minlength",
+						"display_name": "Min Length",
+						"type": "input"
+					}
+				]
+			},
+			{
+				"name": "checkbox",
+				"display_name": "Checkbox",
+				"icon": "<i class=\"ion-ios-circle-outline\"></i>",
+				"droppable": false,
+				"html": "<div class='form-group'><label>Field Name</label><div class='help-text'></div></div>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "name",
+						"find": ":input",
+						"name": "input-name",
+						"display_name": "Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": "label",
+						"name": "input-display-name",
+						"display_name": "Display Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": ".help-text",
+						"name": "input-description",
+						"display_name": "Description",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "required",
+						"find": ":input",
+						"name": "input-required",
+						"display_name": "Required",
+						"type": "select",
+						"options": [
+							{
+								"name": "input-required",
+								"display_name": "Required",
+								"primary": true,
+								"list": [
+									{
+										"name": "true",
+										"display_name": "Yes"
+									},
+									{
+										"name": "false",
+										"display_name": "No"
+									}
+								]
+							}
+						]
+					},
+					{
+						"selector": "before",
+						"store_to": false,
+						"find": ".help-text",
+						"name": "checkboxes",
+						"display_name": "Checkbox",
+						"type": "addmore",
+						"pattern": [
+							{
+								"name": "value",
+								"display_name": "Value"
+							},
+							{
+								"name": "text",
+								"display_name": "Text"
+							}
+						],
+						"clone": "<div class=\"sk-cmp-checkbox\"><input type=\"checkbox\" name=\"mycheckbox\" value=\"{value}\">{text}</div>"
+					}
+				]
+			},
+			{
+				"name": "radio",
+				"display_name": "Radio",
+				"icon": "<i class=\"ion-ios-circle-outline\"></i>",
+				"droppable": false,
+				"html": "<div class='form-group'><label>Field Name</label><div class='help-text'></div></div>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "name",
+						"find": ":input",
+						"name": "input-name",
+						"display_name": "Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": "label",
+						"name": "input-display-name",
+						"display_name": "Display Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": ".help-text",
+						"name": "input-description",
+						"display_name": "Description",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "required",
+						"find": ":input",
+						"name": "input-required",
+						"display_name": "Required",
+						"type": "select",
+						"options": [
+							{
+								"name": "input-required",
+								"display_name": "Required",
+								"primary": true,
+								"list": [
+									{
+										"name": "true",
+										"display_name": "Yes"
+									},
+									{
+										"name": "false",
+										"display_name": "No"
+									}
+								]
+							}
+						]
+					},
+					{
+						"selector": "before",
+						"store_to": false,
+						"find": ".help-text",
+						"name": "radios",
+						"display_name": "Radio",
+						"type": "addmore",
+						"pattern": [
+							{
+								"name": "value",
+								"display_name": "Value"
+							},
+							{
+								"name": "text",
+								"display_name": "Text"
+							}
+						],
+						"clone": "<div class=\"sk-cmp-radio\"><input type=\"radio\" name=\"myradio\" value=\"{value}\">{text}</div>"
+					}
+				]
+			},
+			{
+				"name": "select",
+				"display_name": "Select",
+				"icon": "<i class=\"ion-ios-circle-outline\"></i>",
+				"droppable": false,
+				"html": "<div class='form-group'><label>Field Name</label><select name='field_name' class='form-control'></select><div class='help-text'></div></div>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "name",
+						"find": ":input",
+						"name": "input-name",
+						"display_name": "Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": "label",
+						"name": "input-display-name",
+						"display_name": "Display Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": ".help-text",
+						"name": "input-description",
+						"display_name": "Description",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "required",
+						"find": ":input",
+						"name": "input-required",
+						"display_name": "Required",
+						"type": "select",
+						"options": [
+							{
+								"name": "input-required",
+								"display_name": "Required",
+								"primary": true,
+								"list": [
+									{
+										"name": "true",
+										"display_name": "Yes"
+									},
+									{
+										"name": "false",
+										"display_name": "No"
+									}
+								]
+							}
+						]
+					},
+					{
+						"selector": "append",
+						"store_to": false,
+						"find": "select",
+						"name": "select-options",
+						"display_name": "Options",
+						"type": "addmore",
+						"pattern": [
+							{
+								"name": "value",
+								"display_name": "Value"
+							},
+							{
+								"name": "text",
+								"display_name": "Text"
+							}
+						],
+						"clone": "<option value=\"{value}\">{text}</option>"
+					}
+				]
+			},
+			{
+				"name": "file",
+				"display_name": "File",
+				"icon": "<i class=\"ion-ios-circle-outline\"></i>",
+				"droppable": false,
+				"html": "<div class='form-group'><label>Field Name</label><input type='file' name='field_name' class='form-control'><div class='help-text'></div></div>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "name",
+						"find": ":input",
+						"name": "input-name",
+						"display_name": "Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": "label",
+						"name": "input-display-name",
+						"display_name": "Display Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": ".help-text",
+						"name": "input-description",
+						"display_name": "Description",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "required",
+						"find": ":input",
+						"name": "input-required",
+						"display_name": "Required",
+						"type": "select",
+						"options": [
+							{
+								"name": "input-required",
+								"display_name": "Required",
+								"primary": true,
+								"list": [
+									{
+										"name": "true",
+										"display_name": "Yes"
+									},
+									{
+										"name": "false",
+										"display_name": "No"
+									}
+								]
+							}
+						]
+					},
+					{
+						"selector": "attr",
+						"store_to": "max-filesize",
+						"find": ":input",
+						"name": "input-maxfilesize",
+						"display_name": "Max File Size",
+						"placeholder": "in MB",
+						"type": "input"
+					}
+				]
+			},
+			{
+				"name": "input-image",
+				"display_name": "Image",
+				"icon": "<i class=\"ion-ios-circle-outline\"></i>",
+				"droppable": false,
+				"html": "<div class='form-group'><label>Field Name</label><input type='file' name='field_name' class='form-control'><div class='help-text'></div></div>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "name",
+						"find": ":input",
+						"name": "input-name",
+						"display_name": "Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": "label",
+						"name": "input-display-name",
+						"display_name": "Display Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": ".help-text",
+						"name": "input-description",
+						"display_name": "Description",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "required",
+						"find": ":input",
+						"name": "input-required",
+						"display_name": "Required",
+						"type": "select",
+						"options": [
+							{
+								"name": "input-required",
+								"display_name": "Required",
+								"primary": true,
+								"list": [
+									{
+										"name": "true",
+										"display_name": "Yes"
+									},
+									{
+										"name": "false",
+										"display_name": "No"
+									}
+								]
+							}
+						]
+					},
+					{
+						"selector": "attr",
+						"store_to": "max-filesize",
+						"find": ":input",
+						"name": "input-maxfilesize",
+						"display_name": "Max File Size",
+						"placeholder": "in MB",
+						"type": "input"
+					}
+				]
+			},
+			{
+				"name": "datepicker",
+				"display_name": "Datepicker",
+				"icon": "<i class=\"ion-ios-circle-outline\"></i>",
+				"droppable": false,
+				"html": "<div class='form-group'><label>Field Name</label><input type='text' name='field_name' class='form-control datepicker'><div class='help-text'></div></div>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "name",
+						"find": ":input",
+						"name": "input-name",
+						"display_name": "Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": "label",
+						"name": "input-display-name",
+						"display_name": "Display Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": ".help-text",
+						"name": "input-description",
+						"display_name": "Description",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "required",
+						"find": ":input",
+						"name": "input-required",
+						"display_name": "Required",
+						"type": "select",
+						"options": [
+							{
+								"name": "input-required",
+								"display_name": "Required",
+								"primary": true,
+								"list": [
+									{
+										"name": "true",
+										"display_name": "Yes"
+									},
+									{
+										"name": "false",
+										"display_name": "No"
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "timepicker",
+				"display_name": "Timepicker",
+				"icon": "<i class=\"ion-ios-circle-outline\"></i>",
+				"droppable": false,
+				"html": "<div class='form-group'><label>Field Name</label><input type='text' name='field_name' class='form-control timepicker'><div class='help-text'></div></div>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "name",
+						"find": ":input",
+						"name": "input-name",
+						"display_name": "Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": "label",
+						"name": "input-display-name",
+						"display_name": "Display Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": ".help-text",
+						"name": "input-description",
+						"display_name": "Description",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "required",
+						"find": ":input",
+						"name": "input-required",
+						"display_name": "Required",
+						"type": "select",
+						"options": [
+							{
+								"name": "input-required",
+								"display_name": "Required",
+								"primary": true,
+								"list": [
+									{
+										"name": "true",
+										"display_name": "Yes"
+									},
+									{
+										"name": "false",
+										"display_name": "No"
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "currency",
+				"display_name": "Currency",
+				"icon": "<i class=\"ion-ios-circle-outline\"></i>",
+				"droppable": false,
+				"html": "<div class='form-group'><label>Field Name</label><input type='text' name='field_name' class='form-control currency'><div class='help-text'></div></div>",
+				"editable": [
+					{
+						"selector": "attr",
+						"store_to": "name",
+						"find": ":input",
+						"name": "input-name",
+						"display_name": "Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": "label",
+						"name": "input-display-name",
+						"display_name": "Display Name",
+						"type": "input"
+					},
+					{
+						"selector": "html",
+						"store_to": "this",
+						"find": ".help-text",
+						"name": "input-description",
+						"display_name": "Description",
+						"type": "input"
+					},
+					{
+						"selector": "attr",
+						"store_to": "required",
+						"find": ":input",
+						"name": "input-required",
+						"display_name": "Required",
+						"type": "select",
+						"options": [
+							{
+								"name": "input-required",
+								"display_name": "Required",
+								"primary": true,
+								"list": [
+									{
+										"name": "true",
+										"display_name": "Yes"
+									},
+									{
+										"name": "false",
+										"display_name": "No"
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+]
