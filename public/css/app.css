@@ -871,3 +871,54 @@ td,th {
 	display: inline-block;
 	margin: 0 10px;
 }
+
+.type-item {
+	text-align: center;
+	cursor: pointer;
+	border: 3px solid transparent;
+}
+
+.type-item.active,
+.type-item:hover {
+	border-color: #657DC4;
+}
+
+.type-item.active {
+	border-radius: 5px;
+}
+
+.type-item h4 {
+	text-transform: uppercase;
+	font-size: 14px;
+	letter-spacing: 1px;
+	font-weight: 600;
+}
+
+.type-item p {
+	font-size: 12px;
+	margin-top: 10px;
+	color: #999;
+}
+
+.type-item input {
+	display: none;
+}
+
+.type-item img {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.type-group.highlight {
+	animation-name: highlight;
+	animation-duration: 3s;
+}
+
+@keyframes highlight {
+	0% {
+		background-color: #f9f9f9;
+	}
+	100% {
+		background-color: #fff;
+	}
+}

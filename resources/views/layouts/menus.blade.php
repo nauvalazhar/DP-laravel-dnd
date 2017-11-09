@@ -7,7 +7,7 @@
                 <li class="has-tree{!! is_page('dev') ? ' active' : '' !!}">
                 	<a role="button"><i class="ion ion-code"></i> Developers</a>
                 	<ul>
-                		<li class="{!! is_page('dev/modules') ? 'active' : '' !!}"><a href="{!! route('modules.index') !!}"><i class="ion ion-ios-circle-outline"></i> Modules</a></li>
+                		<li class="{!! is_page('dev/modules') ? 'active' : '' !!}"><a href="{!! route('modules.layout') !!}"><i class="ion ion-ios-circle-outline"></i> Modules</a></li>
                         <li class="{!! is_page('dev/settings') ? 'active' : '' !!}"><a href="{!! route('settings.list') !!}"><i class="ion ion-ios-circle-outline"></i> Setting Group</a></li>
                         <li class="{!! is_page('dev/setting_items') ? 'active' : '' !!}"><a href="{!! route('setting_items.list') !!}"><i class="ion ion-ios-circle-outline"></i> Setting Item</a></li>
                 	</ul>
@@ -15,5 +15,5 @@
                 @endrole
             </ul>
             <div class="under-nav">            
-                <a href="" class="btn btn-primary btn-block"><i class="ion ion-plus"></i> Create New Module</a>
+                <a href="{{ route('modules.layout') }}" class="btn btn-primary btn-block"><i class="ion ion-plus"></i> Create New Module</a>
             </div>

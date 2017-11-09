@@ -3,7 +3,7 @@
 @section('sidemenu')
 <ul>
 	<li>
-		<a href="{!! route('modules.index') !!}">
+		<a href="{!! route('dashboard') !!}">
 			<i class="ion ion-ios-arrow-left"></i> Back
 		</a>
 	</li>
@@ -48,6 +48,168 @@
 
 @section('foot')
 <script>
+	let is_recover = false,
+			is_ws = false;
+
+	// Recover layout
+	let _saved_layout = localStorage.getItem("_starterkit_module_layout"),
+			_saved_setting = localStorage.getItem("_starterkit_module_setting");
+			_saved_setting = JSON.parse(_saved_setting);
+
+	if(_saved_layout && _saved_layout !== '{"node":"root","child":[]}') {
+		is_recover = true;
+		setTimeout(() => {
+			localStorage.setItem('_starterkit_module_layout', _saved_layout);
+		}, 1000);
+		bsModal.create({
+			title: '<i class="ion ion-heart-broken"></i> Recover Layout',
+			body: 'We have found your last work <code>'+(_saved_setting.display_name ? _saved_setting.display_name : 'Untitled Module')+'</code>, would you like to recover it?',
+			options: {
+				backdrop: 'static'
+			},
+			buttons: [
+				{
+					text: 'Recover',
+					class: 'btn btn-primary',
+					handler: function(b) {
+						localStorage.setItem('_starterkit_module_layout', _saved_layout);
+						selector.source_area.val(_saved_layout);
+						source.init();
+						bsModal.hide();
+					}
+				},
+				{
+					text: 'Destroy',
+					class: 'btn btn-default',
+					handler: function(b) {
+						localStorage.removeItem('_starterkit_module_layout');
+						localStorage.removeItem('_starterkit_module_setting');
+						welcome_screen();
+					}
+				}
+			]
+		});
+	}
+
+	let welcome_screen = function() {
+		let ws_body = "";
+				ws_body += '<p>Lets create your module easly, just drag and drop component you want inside droppable area. Before started you should read the <a role="button" onclick="editor_area.tips(true);">intruction</a> for more help. Or you can <a role="button" onclick=\'$("#module-import").click();\'>import an already layout</a>.</p>';
+				ws_body += '<div class="row">';
+				ws_body += '<div class="col-md-6">';
+				ws_body += '<div class="form-group">';
+				ws_body += '<label>Name</label>';
+				ws_body += '<input type="text" class="form-control" id="ws-name" placeholder="e.g: blog_post">';
+				ws_body += '</div>';
+				ws_body += '</div>';
+				ws_body += '<div class="col-md-6">';
+				ws_body += '<div class="form-group">';
+				ws_body += '<label>Display Name</label>';
+				ws_body += '<input type="text" class="form-control" id="ws-display-name" placeholder="e.g: Blog Post">';
+				ws_body += '</div>';
+				ws_body += '</div>';
+				ws_body += '</div>';
+				ws_body += '<div class="row type-group">';
+				ws_body += '<div class="col-md-12">';
+				ws_body += '<div class="form-group">';
+				ws_body += '<label>Type</label>';
+				ws_body += '<p>Choose type of your module.</p>';
+				ws_body += '<div class="row">';
+				ws_body += '<div class="col-md-4">';
+				ws_body += '<div class="type-item">';
+				ws_body += '<img src="'+base_url+'/img/builder/type-loop.png">';
+				ws_body += '<input type="radio" name="ws_type" value="loop">';
+				ws_body += '<h4>Loop</h4>';
+				ws_body += '<p>You can create more than one record, recommended if you want create module for blog post, pages, etc.</p>';
+				ws_body += '</div>';
+				ws_body += '</div>';
+				ws_body += '<div class="col-md-4">';
+				ws_body += '<div class="type-item">';
+				ws_body += '<img src="'+base_url+'/img/builder/type-single.png">';
+				ws_body += '<input type="radio" name="ws_type" value="single">';
+				ws_body += '<h4>Single</h4>';
+				ws_body += '<p>You only can update an available record this is recommended if you want create module for contact info, etc.</p>';
+				ws_body += '</div>';
+				ws_body += '</div>';
+				ws_body += '<div class="col-md-4">';
+				ws_body += '<div class="type-item">';
+				ws_body += '<img src="'+base_url+'/img/builder/type-sortable.png">';
+				ws_body += '<input type="radio" name="ws_type" value="sortable">';
+				ws_body += '<h4>Sortable</h4>';
+				ws_body += '<p>Sortable allow you to sort the available record. Recommended if you want create module for categories, dynamic menus, etc.</p>';
+				ws_body += '</div>';
+				ws_body += '</div>';
+				ws_body += '</div>';
+				ws_body += '</div>';
+				ws_body += '</div>';
+				ws_body += '</div>';
+
+		bsModal.create({
+			options: {
+				backdrop: 'static'
+			},
+			class: 'modal-lg',
+			title: 'Welcome to Builder',
+			body: ws_body,
+			buttons: [
+				{
+					text: 'Get Started',
+					class: 'btn btn-primary',
+					handler: function(b) {
+						let name = b.find(".modal-body #ws-name").val(),
+								display_name = b.find(".modal-body #ws-display-name").val(),
+								type = b.find(".modal-body [name='ws_type']:checked").val();
+
+						if(!name) {
+							b.find(".modal-body #ws-name").focus();
+							return;
+						}else if(!display_name) {
+							b.find(".modal-body #ws-display-name").focus();
+							return;
+						}else if(!type) {
+							b.find(".modal-body .type-group").addClass("highlight");
+							setTimeout(() => {
+								b.find(".modal-body .type-group").removeClass("highlight");
+							}, 1000);
+							return;
+						}
+
+						let setting = {
+							name: name,
+							display_name: display_name,
+							type: type
+						}
+						localStorage.setItem("_starterkit_module_setting", JSON.stringify(setting));
+						bsModal.hide();
+						is_ws = false;
+					}
+				},
+				{
+					text: 'Back to Dashboard',
+					class: 'btn btn-default',
+					handler: function() {
+						document.location = '{{route('dashboard')}}';
+					}
+				}
+			]
+		}, function(b) {
+			b.find(".type-item").click(function() {
+				b.find(".type-item").removeClass('active');
+				if($(this).hasClass('active')) {
+					$(this).removeClass('active');
+					$(this).find("input").prop("checked", false);
+				}else{
+					$(this).addClass('active');
+					$(this).find("input").prop("checked", true);
+				}
+			});
+		});
+	}
+
+	if(is_recover == false) {
+		welcome_screen();
+		is_ws = true;
+	}
+
 	let selector = {
 		toolbox: $("#toolbox"),
 		editor_area: $("#editor_area"),
@@ -79,45 +241,6 @@
 			return false;
 		}
 	});
-
-	// Recover layout
-	let _saved_layout = localStorage.getItem("_starterkit_module_layout"),
-			_saved_setting = localStorage.getItem("_starterkit_module_setting");
-			_saved_setting = JSON.parse(_saved_setting);
-
-	if(_saved_layout && _saved_layout !== '{"node":"root","child":[]}') {
-		setTimeout(() => {
-			localStorage.setItem('_starterkit_module_layout', _saved_layout);
-		}, 1000);
-		bsModal.create({
-			title: '<i class="ion ion-heart-broken"></i> Recover Layout',
-			body: 'We have found your last work <code>'+(_saved_setting.display_name ? _saved_setting.display_name : 'Untitled Module')+'</code>, would you like to recover it?',
-			options: {
-				backdrop: 'static'
-			},
-			buttons: [
-				{
-					text: 'Recover',
-					class: 'btn btn-primary',
-					handler: function(b) {
-						localStorage.setItem('_starterkit_module_layout', _saved_layout);
-						selector.source_area.val(_saved_layout);
-						source.init();
-						bsModal.hide();
-					}
-				},
-				{
-					text: 'Destroy',
-					class: 'btn btn-default',
-					handler: function(b) {
-						localStorage.removeItem('_starterkit_module_layout');
-						localStorage.removeItem('_starterkit_module_setting');
-						bsModal.hide();
-					}
-				}
-			]
-		});
-	}
 
 	let source = {
 		init: function() {
@@ -247,6 +370,9 @@
 	    classes: {
 	      "ui-droppable-active": "ui-state-highlight"
 	    },
+	    over: function(ev, ui) {
+	    	console.log(ev)
+	    },
 			drop: function(ev, ui) {
 				var toolbox_item = $(ui.draggable).find("a"),
 						toolbox_item_name = toolbox_item.data('item-name'),
@@ -315,10 +441,7 @@
 		},
 		elementFunction: function(elem) {
 			elem.addClass("editor-draggable-element");
-			// if(typeof selected_element_object == "object" && selected_element_object.droppable !== false) {
-				elem.droppable(editor_area.options);
-			// }
-			elem.sortable();
+			elem.droppable(editor_area.options);
 			elem.draggable(editor_area.draggable_options);
 			elem.on("contextmenu", editor_area.inspect);
 			elem.on("click", function() {
@@ -361,17 +484,28 @@
 			editor_area.check();
 			selector.editor_area.droppable(editor_area.options);
 		},
-		tips: function() {
+		tips: function(_ws) {
+			let buttons;
+			if(_ws) {
+				buttons = [{
+					text: 'Back',
+					class: 'btn default',
+					handler: function() {
+						welcome_screen();
+					}
+				}]
+			}else{
+				buttons = [{
+					text: 'Yes, i got it!',
+					class: 'btn btn-primary',
+					role: 'close'
+				}]
+			}
+
 			bsModal.create({
 				title: '<i class="ion ion-ios-lightbulb-outline"></i> Tips',
 				bodyLoad: request_url.intructions,
-				buttons: [
-					{
-						text: 'Yes, i got it!',
-						class: 'btn btn-primary',
-						role: 'close'
-					}
-				]
+				buttons: buttons
 			});
 		},
 		preview: function(e) {
@@ -955,8 +1089,7 @@
 			        		buttons: [
 			        			{
 			        				text: 'Close',
-			        				role: 'close',
-			        				class: 'btn btn-primary'
+			        				class: 'btn btn-primary',
 			        			}
 			        		]
 			        	});
@@ -972,7 +1105,14 @@
 				},
 				{
 					text: 'Close',
-					class: 'btn btn-default'
+					class: 'btn btn-default',
+					handler: function(b) {
+						if(is_ws) {
+							welcome_screen();
+						}else{
+							bsModal.hide();
+						}
+					}
 				}
 			]
 		})

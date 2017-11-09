@@ -104,11 +104,10 @@ Route::group(['prefix' => config('starter.prefix')], function() {
 
 			// Modules
 			Route::group(['prefix' => 'modules'], function() {
-				Route::get('', 'ModulesController@index')->name('modules.index')->middleware('permission:dev_module_list');
+				Route::get('', 'ModulesController@layout')->name('modules.layout')->middleware('permission:dev_module_layout');
+				Route::post('', 'ModulesController@layout')->name('modules.layout')->middleware('permission:dev_module_layout');
 				Route::get('create', 'ModulesController@create')->name('modules.create')->middleware('permission:dev_module_create');
 				Route::post('create', 'ModulesController@store')->name('modules.store')->middleware('permission:dev_module_create');
-				Route::get('layout/{name}', 'ModulesController@layout')->name('modules.layout')->middleware('permission:dev_module_layout');
-				Route::post('layout/{name}', 'ModulesController@layout')->name('modules.layout')->middleware('permission:dev_module_layout');
 				Route::get('{id}/edit', 'ModulesController@edit')->name('modules.edit')->middleware('permission:dev_module_edit');
 				Route::put('{id}/edit', 'ModulesController@update')->name('modules.update')->middleware('permission:dev_module_edit');
 				Route::patch('{id}/edit', 'ModulesController@update')->name('modules.update')->middleware('permission:dev_module_edit');

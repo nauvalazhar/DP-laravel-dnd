@@ -141,7 +141,7 @@ let destroy = function() {
 // Bootstrap reusable function
 let bsModal = {
 	// Private property
-	_element: '<div class="modal fade" id="bsmodal"><div class="modal-dialog"><div class="modal-content modal-md"><div class="modal-header"><h4>{title}</h4></div><div class="modal-body">{body}</div><div class="modal-footer">{footer}</div></div></div></div>',
+	_element: '<div class="modal fade" id="bsmodal"><div class="modal-dialog {size}"><div class="modal-content"><div class="modal-header"><h4>{title}</h4></div><div class="modal-body">{body}</div><div class="modal-footer">{footer}</div></div></div></div>',
 
 	load: function(url) {
 		let result;
@@ -164,38 +164,52 @@ let bsModal = {
 		$("#bsmodal").modal('hide');
 		setTimeout(function() {
 			$("#bsmodal").remove();
-		}, 1000);
+		}, 300);
 	},
-	create: function(data) {
-		let element = bsModal._element;
-				if(data.title)
-				element = element.replace(/{title}/g, data.title);
-				if(data.body)
-					element = element.replace(/{body}/g, data.body);
-				if(data.bodyLoad)
-					element = element.replace(/{body}/g, bsModal.load(data.bodyLoad));
+	create: function(data, oncreate) {
+		let _create = function() {		
+			let element = bsModal._element;
+					if(data.title)
+					element = element.replace(/{title}/g, data.title);
+					if(data.body)
+						element = element.replace(/{body}/g, data.body);
+					if(data.bodyLoad)
+						element = element.replace(/{body}/g, bsModal.load(data.bodyLoad));
 
-		element = element.replace(/{footer}/g, '');
+			element = element.replace(/{footer}/g, '');
+			element = element.replace(/{size}/g, (data.class ? data.class : 'modal-md'));
 
-		let options;
-		if(data.options) {
-			options = data.options;
-		}else{
-			options = {};
+			let options;
+			if(data.options) {
+				options = data.options;
+			}else{
+				options = {};
+			}
+			element = $(element).modal(options);
+
+			$("body").append(element);
+			if(oncreate)
+				oncreate.call(this, $("#bsmodal"));
+		
+			if(data.buttons) {
+				data.buttons.forEach((_button) => {
+				  let __button = "<button class='" + _button.class + "' " + (_button.role == 'close' ? "data-dismiss='modal'" : '') + ">" + _button.text + "</button>";
+				  __button = $(__button);
+				  __button.click(function() {
+				  	_button.handler.call(this, $("#bsmodal"));
+				  });
+				  $("#bsmodal .modal-footer").append(__button);
+				});
+			}
 		}
-		element = $(element).modal(options);
 
-		$("body").append(element);
-	
-		if(data.buttons) {
-			data.buttons.forEach((_button) => {
-			  let __button = "<button class='" + _button.class + "' " + (_button.role == 'close' ? "data-dismiss='modal'" : '') + ">" + _button.text + "</button>";
-			  __button = $(__button);
-			  __button.click(function() {
-			  	_button.handler.call(this, $("#bsmodal"));
-			  });
-			  $("#bsmodal .modal-footer").append(__button);
-			});
+		if($("#bsmodal").length) {
+			bsModal.hide();
+			setTimeout(() => {
+			  _create();
+			}, 1000);
+		}else{
+			_create();
 		}
 	}
 }
