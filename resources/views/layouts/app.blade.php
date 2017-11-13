@@ -141,6 +141,7 @@
     <script src="{{ url('scripts/underscore/underscore.js') }}"></script>
     <script src="{{ url('scripts/nicescroll/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ url('scripts/showdown/dist/showdown.min.js') }}"></script>
+    <script src="{{ url('scripts/htmlbeautify/htmlbeautify.min.js') }}"></script>
     <script>let base_url = '{{url('')}}';</script>
     <script src="{{ url('js/custom.js') }}"></script>
     @yield('foot')

@@ -69,3 +69,44 @@ function path() {
 function media_path() {
 	return config("starter.path.media");
 }
+
+function module_path($name) {
+	return config('view.paths')[0] . path() . $name;
+}
+
+function system_name($str) {
+	$str = str_replace(" ", "_", $str);
+	$str = strtolower($str);
+	return $str;
+}
+
+function base_template($file) {
+	$file = str_replace(".", path(), $file);
+	$base = base_path('starter-kit' . path() . 'base_module' . path() . $file . '.tpl');
+	return $base;
+}
+
+function get_base_template($file) {
+	return file_get_contents(base_template($file));
+}
+
+function compile_base_template($files, $data) {
+	$f = [];
+	foreach ($files as $k => $file) {
+		$f[$k] = $file;
+		foreach($data as $d => $r) {
+			$f[$k] = str_replace('['.$d.']', $r, $f[$k]);
+		}
+	}
+	return $f;
+}
+
+function create_base_template($files, $name) {
+	mkdir(config('view.paths')[0] . path() . $name);
+	foreach($files as $k => $f) {
+		$path = config('view.paths')[0] . path() . $name . path() . $k . '.blade.php';
+		$create = fopen($path, 'w');
+		fwrite($create, $f);
+		fclose($create);
+	}
+}

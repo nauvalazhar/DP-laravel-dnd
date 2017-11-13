@@ -573,6 +573,7 @@
 				"display_name": "H4",
 				"icon": "<i class=\"ion ion-information\"></i>",
 				"html": "<h4>Heading 4</h4>",
+				"droppable": false,
 				"editable": [
 					{
 						"selector": "html",
@@ -664,12 +665,12 @@
 								"primary": true,
 								"list": [
 									{
-										"name": "required",
-										"display_name": "Yes"
-									},
-									{
 										"name": "no",
 										"display_name": "No"
+									},
+									{
+										"name": "required",
+										"display_name": "Yes"
 									}
 								]
 							}
@@ -738,12 +739,12 @@
 								"primary": true,
 								"list": [
 									{
-										"name": "true",
-										"display_name": "Yes"
-									},
-									{
 										"name": "false",
 										"display_name": "No"
+									},
+									{
+										"name": "true",
+										"display_name": "Yes"
 									}
 								]
 							}
@@ -812,12 +813,12 @@
 								"primary": true,
 								"list": [
 									{
-										"name": "true",
-										"display_name": "Yes"
-									},
-									{
 										"name": "false",
 										"display_name": "No"
+									},
+									{
+										"name": "true",
+										"display_name": "Yes"
 									}
 								]
 							}
@@ -886,12 +887,12 @@
 								"primary": true,
 								"list": [
 									{
-										"name": "true",
-										"display_name": "Yes"
-									},
-									{
 										"name": "false",
 										"display_name": "No"
+									},
+									{
+										"name": "true",
+										"display_name": "Yes"
 									}
 								]
 							}
@@ -960,12 +961,12 @@
 								"primary": true,
 								"list": [
 									{
-										"name": "true",
-										"display_name": "Yes"
-									},
-									{
 										"name": "false",
 										"display_name": "No"
+									},
+									{
+										"name": "true",
+										"display_name": "Yes"
 									}
 								]
 							}
@@ -1034,12 +1035,12 @@
 								"primary": true,
 								"list": [
 									{
-										"name": "true",
-										"display_name": "Yes"
-									},
-									{
 										"name": "false",
 										"display_name": "No"
+									},
+									{
+										"name": "true",
+										"display_name": "Yes"
 									}
 								]
 							}
@@ -1111,12 +1112,12 @@
 								"primary": true,
 								"list": [
 									{
-										"name": "true",
-										"display_name": "Yes"
-									},
-									{
 										"name": "false",
 										"display_name": "No"
+									},
+									{
+										"name": "true",
+										"display_name": "Yes"
 									}
 								]
 							}
@@ -1188,12 +1189,12 @@
 								"primary": true,
 								"list": [
 									{
-										"name": "true",
-										"display_name": "Yes"
-									},
-									{
 										"name": "false",
 										"display_name": "No"
+									},
+									{
+										"name": "true",
+										"display_name": "Yes"
 									}
 								]
 							}
@@ -1265,12 +1266,12 @@
 								"primary": true,
 								"list": [
 									{
-										"name": "true",
-										"display_name": "Yes"
-									},
-									{
 										"name": "false",
 										"display_name": "No"
+									},
+									{
+										"name": "true",
+										"display_name": "Yes"
 									}
 								]
 							}
@@ -1332,12 +1333,12 @@
 								"primary": true,
 								"list": [
 									{
-										"name": "true",
-										"display_name": "Yes"
-									},
-									{
 										"name": "false",
 										"display_name": "No"
+									},
+									{
+										"name": "true",
+										"display_name": "Yes"
 									}
 								]
 							}
@@ -1399,12 +1400,12 @@
 								"primary": true,
 								"list": [
 									{
-										"name": "true",
-										"display_name": "Yes"
-									},
-									{
 										"name": "false",
 										"display_name": "No"
+									},
+									{
+										"name": "true",
+										"display_name": "Yes"
 									}
 								]
 							}
@@ -1457,12 +1458,12 @@
 								"primary": true,
 								"list": [
 									{
-										"name": "true",
-										"display_name": "Yes"
-									},
-									{
 										"name": "false",
 										"display_name": "No"
+									},
+									{
+										"name": "true",
+										"display_name": "Yes"
 									}
 								]
 							}
@@ -1515,12 +1516,12 @@
 								"primary": true,
 								"list": [
 									{
-										"name": "true",
-										"display_name": "Yes"
-									},
-									{
 										"name": "false",
 										"display_name": "No"
+									},
+									{
+										"name": "true",
+										"display_name": "Yes"
 									}
 								]
 							}

@@ -196,20 +196,52 @@ let bsModal = {
 				  let __button = "<button class='" + _button.class + "' " + (_button.role == 'close' ? "data-dismiss='modal'" : '') + ">" + _button.text + "</button>";
 				  __button = $(__button);
 				  __button.click(function() {
-				  	_button.handler.call(this, $("#bsmodal"));
+				  	_button.handler.call(this, $("#bsmodal"), $(this));
 				  });
 				  $("#bsmodal .modal-footer").append(__button);
 				});
 			}
+
+			$('#bsmodal').on('hidden.bs.modal', function (e) {
+				$("#bsmodal").remove();
+			});
 		}
 
 		if($("#bsmodal").length) {
 			bsModal.hide();
 			setTimeout(() => {
 			  _create();
-			}, 1000);
+			}, 500);
 		}else{
 			_create();
 		}
 	}
+}
+
+let optional = function(val) {
+	if(val == undefined) {
+		return null;
+	}
+	return val;
+}
+
+let generate_html = function(html) {
+	let regex = [
+		/editor-draggable-element/g,
+		/ui-([a-zA-Z0-9-]+)/g,
+		/data-([a-zA-Z0-9- /\//.="\[\]\{\}\&\:\;\,]+)\"/g,
+		/<div class="help-text"><\/div>/g
+	];
+	regex.forEach((reg) => {
+		html = html.replace(reg, "");
+	})
+	html = html.replace(/ +/g, " ").replace(/ "/g, '"').replace(/" /g, '"');
+	html = html_beautify(html, {
+		wrap_line_length: 0,
+		brace_style: 'expand',
+		end_with_newline: true,
+		extra_liners: ['/label'],
+		preserve_newlines: false
+	});
+	return html;
 }

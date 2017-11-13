@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Module Layout', 'menu' => false])
+@extends('layouts.app', ['title' => 'Module Builder', 'menu' => false])
 
 @section('sidemenu')
 <ul>
@@ -21,7 +21,7 @@
 @stop
 
 @section('content')
-	@component('layouts.parts.header', ['title' => 'Module Layout'])
+	@component('layouts.parts.header', ['title' => 'Module Builder'])
 
 	<div class="inspector">
 	</div>
@@ -34,7 +34,7 @@
 			<ul class="dropdown-menu dropdown-menu-left">
 				<li><a role="button" id="module-setting">Module Setting ...</a></li>
 				<li class="divider"></li>
-				<li><a role="button"><i class="ion ion-code-working"></i> Generate Module</a></li>
+				<li><a role="button" id="module-generate"><i class="ion ion-code-working"></i> Generate Module</a></li>
 				<li><a role="button" id="module-export"><i class="ion ion-ios-download-outline"></i> Export</a></li>
 				<li><a role="button" id="module-import"><i class="ion ion-ios-upload-outline"></i> Import</a></li>
 			</ul>
@@ -148,7 +148,7 @@
 				backdrop: 'static'
 			},
 			class: 'modal-lg',
-			title: 'Welcome to Builder',
+			title: '<i class="ion ion-erlenmeyer-flask"></i> Welcome to Builder',
 			body: ws_body,
 			buttons: [
 				{
@@ -219,7 +219,8 @@
 
 	let request_url = {
 		components: '{{ route('starterkit.file', ['json', 'components']) }}',
-		intructions: '{{ route('starterkit.file', ['md', 'intructions']) }}'
+		intructions: '{{ route('starterkit.file', ['md', 'intructions']) }}',
+		generate: '{{ route('modules.generate') }}'
 	}
 
 	$(document).on('keydown', function(e) {
@@ -510,7 +511,7 @@
 		},
 		preview: function(e) {
 			inspector.destroy();
-			let preview_button = $(e.target);
+			let preview_button = $(".btn.preview");
 
 			if(!selector.editor_area.hasClass('mode-preview')) {
 				selector.editor_area.addClass('mode-preview');
@@ -610,6 +611,7 @@
 					}
 				}
 
+				attr_value = attr_value.trim();
 				selected_element.attr(selected_editable.store_to, attr_value);
 			}else if(selected_editable.selector == 'html') {
 				let html_value = selected_element.html();
@@ -853,7 +855,7 @@
 			inspector.updateOptionHtml(data);
 		},
 		updateOptionList: function(data) {
-			let options = selected_element.attr('data-options');
+			let options = selected_element.attr('data-editor-options');
 			
 			if(options) {
 				options = JSON.parse(options);
@@ -886,7 +888,7 @@
 				selected_element[data.selector]($(clone));
 			});
 			selected_element = _selected_element;
-			selected_element.attr('data-options', JSON.stringify(_data));
+			selected_element.attr('data-editor-options', JSON.stringify(_data));
 
 			source.update();
 		},
@@ -914,7 +916,7 @@
 				containment: '.main'
 			});
 
-			let top = event.clientY,
+			let top = event.clientY + $(window).scrollTop(),
 					left = event.clientX;
 
 			if(left + selector.inspector.outerWidth() >= $(document).outerWidth()) {
@@ -940,6 +942,9 @@
 			$(document).keydown(function(e) {
 				if(e.keyCode == 46) {
 					inspector.removeElement();
+				}
+				else if(e.keyCode == 27) {
+					inspector.destroy();
 				}
 			});
 		},
@@ -1085,10 +1090,11 @@
 			        }, function (e) {
 			        	bsModal.create({
 			        		title: 'Error Reading File',
-			        		body: "Error reading " + f.name + ": " + e.message,
+			        		body: "Error reading " + f.name + ": Your file isn't <code>.starterkit</code> file or your uploaded file is broken.",
 			        		buttons: [
 			        			{
 			        				text: 'Close',
+			        				role: "close",
 			        				class: 'btn btn-primary',
 			        			}
 			        		]
@@ -1112,6 +1118,116 @@
 						}else{
 							bsModal.hide();
 						}
+					}
+				}
+			]
+		})
+	});
+
+	$("#module-generate").on("click", function() {
+		let _saved_layout = localStorage.getItem("_starterkit_module_layout"),
+				_saved_setting = localStorage.getItem("_starterkit_module_setting"),
+				_html = json2html(JSON.parse(_saved_layout));
+
+				console.log($(_html).find("button[type='submit']"))
+		if($(_html).find("button[type='submit']").length == 0) {
+			bsModal.create({
+				title: 'Missing Element',
+				body: 'You don\'t have a submit button',
+				buttons: [
+					{
+						text: 'Close',
+						class: 'btn btn-primary',
+						role: 'close'
+					}
+				]
+			});
+			return;
+		}else if($(_html).find(".form-group").length == 0) {
+			bsModal.create({
+				title: 'Missing Element',
+				body: 'You don\'t have a field',
+				buttons: [
+					{
+						text: 'Close',
+						class: 'btn btn-primary',
+						role: 'close'
+					}
+				]
+			});
+			return;
+		}
+
+		let _body = '';
+				_body += '<div class="row">';
+				_body += '<div class="col-md-4">';
+				_body += '<div class="form-group">';
+				_body += '<label>Name</label>';
+				_body += '<input type="text" class="form-control" value="Name">';
+				_body += '</div>';
+				_body += '</div>';
+				_body += '<div class="col-md-4">';
+				_body += '<div class="form-group">';
+				_body += '<label>Display Name</label>';
+				_body += '<input type="text" class="form-control" value="Name">';
+				_body += '</div>';
+				_body += '</div>';
+				_body += '<div class="col-md-4">';
+				_body += '<div class="form-group">';
+				_body += '<label>Type</label>';
+				_body += '<input type="text" class="form-control" value="Name">';
+				_body += '</div>';
+				_body += '</div>';
+				_body += '</div>';
+		bsModal.create({
+			title: 'Module Generate',
+			body: _body,
+			class: 'modal-lg',
+			buttons: [
+				{
+					text: 'Generate',
+					class: 'btn btn-primary',
+					handler: function(b, button) {
+						let _saved_fields = [];
+						$(_html).find('.form-group').each(function(i) {
+							_saved_fields[i] = {
+								name: $(this).find(":input").attr('name'),
+								display_name: $(this).find("label").html(),
+								required: optional($(this).find(":input").attr('required')),
+								max: optional($(this).find(":input").attr('max')),
+								min: optional($(this).find(":input").attr('min')),
+								max_filesize: optional($(this).find(":input").attr('max-filesize'))
+							}
+						});
+
+						_saved_layout = generate_html(_html);
+						let _button_text = button.html(),
+								_data_to_send = {
+									layout: _saved_layout,
+									setting: _saved_setting,
+									fields: _saved_fields
+								};
+
+						$.ajax({
+							url: request_url.generate,
+							data: _data_to_send,
+							headers: {
+								'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr('content')
+							},
+							type: 'post',
+							dataType: 'json',
+							error: function(xhr) {
+								console.log(xhr)
+							},
+							beforeSend: function() {
+								button.html('Generating module ...');
+								button.addClass('disabled');								
+							},
+							complete: function() {
+								button.html(_button_text);
+								button.removeClass('disabled');								
+							}
+						})
 					}
 				}
 			]
