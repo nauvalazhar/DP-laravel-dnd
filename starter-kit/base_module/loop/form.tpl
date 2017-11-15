@@ -9,6 +9,6 @@
 
 <form method="post" action="{{ route('[MODULE_NAME_PLURAL].store') }}" enctype="multipart/form-data">
 	{!! csrf_field() !!}
-	[MODULE_LAYOUT]
+[MODULE_LAYOUT]
 </form>
 @stop

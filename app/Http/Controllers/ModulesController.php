@@ -43,10 +43,10 @@ class ModulesController extends Controller
         $module_column_row = "";
 
         $base_template = [];
-        $base_template['index'] = get_base_template($module_type . '.index');
-        $base_template['form'] = get_base_template($module_type . '.form');
+        $base_template['index'] = get_base_mvc($module_type . '.index');
+        $base_template['form'] = get_base_mvc($module_type . '.form');
 
-        $compiled_template = compile_base_template($base_template, [
+        $compiled_template = compile_base_mvc($base_template, [
             'MODULE_NAME' => $module_name,
             'MODULE_NAME_PLURAL' => $module_name_plural,
             'MODULE_DISPLAY_NAME' => $module_display_name,
@@ -56,8 +56,9 @@ class ModulesController extends Controller
             'MODULE_LAYOUT' => $module_layout
         ]);
         
-        $create_template = create_base_template($compiled_template, $module_name);
-        // $file = fopen("newfile.txt", "w");
+        $create_template = create_base_mvc($compiled_template, $module_name);
+
+
 
         return $errors;
     }

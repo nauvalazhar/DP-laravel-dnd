@@ -80,17 +80,17 @@ function system_name($str) {
 	return $str;
 }
 
-function base_template($file) {
+function base_mvc($file) {
 	$file = str_replace(".", path(), $file);
 	$base = base_path('starter-kit' . path() . 'base_module' . path() . $file . '.tpl');
 	return $base;
 }
 
-function get_base_template($file) {
-	return file_get_contents(base_template($file));
+function get_base_mvc($file) {
+	return file_get_contents(base_mvc($file));
 }
 
-function compile_base_template($files, $data) {
+function compile_base_mvc($files, $data) {
 	$f = [];
 	foreach ($files as $k => $file) {
 		$f[$k] = $file;
@@ -101,7 +101,7 @@ function compile_base_template($files, $data) {
 	return $f;
 }
 
-function create_base_template($files, $name) {
+function create_base_mvc($files, $name) {
 	mkdir(config('view.paths')[0] . path() . $name);
 	foreach($files as $k => $f) {
 		$path = config('view.paths')[0] . path() . $name . path() . $k . '.blade.php';
