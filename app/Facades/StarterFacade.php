@@ -98,8 +98,8 @@ class StarterFacade {
 
 					// Modules
 					Route::group(['prefix' => 'modules'], function() {
-						Route::get('', 'ModulesController@layout')->name('modules.layout')->middleware('permission:dev_module_layout');
-						Route::post('', 'ModulesController@layout')->name('modules.layout')->middleware('permission:dev_module_layout');
+						Route::get('', 'ModulesController@layout')->name('modules.layout')->middleware('permission:dev_module_create');
+						Route::post('', 'ModulesController@layout')->name('modules.layout')->middleware('permission:dev_module_create');
 						Route::get('create', 'ModulesController@create')->name('modules.create')->middleware('permission:dev_module_create');
 						Route::post('create', 'ModulesController@store')->name('modules.store')->middleware('permission:dev_module_create');
 						Route::post('generate', 'ModulesController@generate')->name('modules.generate')->middleware('permission:dev_module_create');
