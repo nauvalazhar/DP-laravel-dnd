@@ -37,7 +37,7 @@
     "inflate"
   ],
   "devDependencies": {
-    "grunt": "~0.4.1",
+    "grunt": "~1.3.0",
     "grunt-cli": "~1.1.0",
     "grunt-saucelabs": "~8.6.2",
     "grunt-contrib-connect": "1.0.0",
